@@ -1,42 +1,103 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>CGPA Calculator</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tutor Teaching Days Tracker</title>
+<style>
+  body {
+    font-family: 'Courier New', monospace;
+    background-color: #0d0d0d;
+    color: #00ffff;
+    padding: 20px;
+    max-width: 600px;
+    margin: auto;
+    text-align: center;
+  }
+  h1 { text-shadow: 0 0 10px #ff00ff; }
+  .student {
+    background-color: #111;
+    margin: 10px 0;
+    padding: 15px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px #00ffff;
+  }
+  button {
+    padding: 10px 20px;
+    margin-top: 10px;
+    border: none;
+    border-radius: 5px;
+    background-color: #ff00ff;
+    color: #0d0d0d;
+    cursor: pointer;
+    box-shadow: 0 0 10px #ff00ff;
+    font-size: 16px;
+  }
+  button:hover { box-shadow: 0 0 20px #ff00ff; }
+  .count {
+    font-size: 20px;
+    margin-top: 10px;
+    color: #00ffff;
+  }
+</style>
 </head>
 <body>
 
-    <!-- Big title with creator name -->
-    <h1 style="font-size:36px; text-align:center;">🌟 CGPA Calculator 🌟</h1>
-    <h2 style="font-size:24px; text-align:center;">Creator: Tahsin Bhuiyan</h2>
-    <hr>
+<h1>Tutor Teaching Days Tracker</h1>
 
-    <h3>Enter Grades and Credits for 5 Subjects</h3>
+<div class="student">
+  <div>Alfa</div>
+  <div class="count" id="AlfaCount">0</div>
+  <button onclick="addDay('Alfa')">Add Day 🔘</button>
+</div>
 
-    Subject 1 Grade: <input type="number" step="0.01" id="grade1"><br>
-    Subject 1 Credit: <input type="number" id="credit1"><br><br>
+<div class="student">
+  <div>Beta</div>
+  <div class="count" id="BetaCount">0</div>
+  <button onclick="addDay('Beta')">Add Day 🔘</button>
+</div>
 
-    Subject 2 Grade: <input type="number" step="0.01" id="grade2"><br>
-    Subject 2 Credit: <input type="number" id="credit2"><br><br>
+<div class="student">
+  <div>Gamma</div>
+  <div class="count" id="GammaCount">0</div>
+  <button onclick="addDay('Gamma')">Add Day 🔘</button>
+</div>
 
-    Subject 3 Grade: <input type="number" step="0.01" id="grade3"><br>
-    Subject 3 Credit: <input type="number" id="credit3"><br><br>
+<div class="student">
+  <div>Delta</div>
+  <div class="count" id="DeltaCount">0</div>
+  <button onclick="addDay('Delta')">Add Day 🔘</button>
+</div>
 
-    Subject 4 Grade: <input type="number" step="0.01" id="grade4"><br>
-    Subject 4 Credit: <input type="number" id="credit4"><br><br>
+<div class="student">
+  <div>Proxy</div>
+  <div class="count" id="ProxyCount">0</div>
+  <button onclick="addDay('Proxy')">Add Day 🔘</button>
+</div>
 
-    Subject 5 Grade: <input type="number" step="0.01" id="grade5"><br>
-    Subject 5 Credit: <input type="number" id="credit5"><br><br>
+<script>
+// Load counts from localStorage or start at 0
+let counts = JSON.parse(localStorage.getItem('teachingCounts')) || {
+  Alfa: 0, Beta: 0, Gamma: 0, Delta: 0, Proxy: 0
+};
 
-    <h3>Optional: Target CGPA</h3>
-    Target CGPA: <input type="number" step="0.01" id="targetCGPA"><br>
-    Future Credits: <input type="number" id="futureCredits"><br><br>
+// Update displayed counts
+function renderCounts() {
+  for (let student in counts) {
+    document.getElementById(student + 'Count').innerText = counts[student];
+  }
+}
 
-    <button onclick="calculateCGPA()">Calculate CGPA</button>
+// Add a day to a student
+function addDay(student) {
+  counts[student]++;
+  localStorage.setItem('teachingCounts', JSON.stringify(counts));
+  renderCounts();
+}
 
-    <p id="result" style="white-space: pre-line; font-size:18px; margin-top:20px;"></p>
-
-    <script src="script.js"></script>
+// Initial render
+renderCounts();
+</script>
 
 </body>
-  </html>
+</html>
