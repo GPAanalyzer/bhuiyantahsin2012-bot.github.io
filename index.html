@@ -1,10 +1,42 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title>My First Website</title>
+    <meta charset="UTF-8">
+    <title>CGPA Calculator</title>
 </head>
 <body>
-  <h1>🎉 Website Successfully Created!</h1>
-  <p>Hosted free using GitHub Pages.</p>
+
+    <!-- Big title with creator name -->
+    <h1 style="font-size:36px; text-align:center;">🌟 CGPA Calculator 🌟</h1>
+    <h2 style="font-size:24px; text-align:center;">Creator: Tahsin Bhuiyan</h2>
+    <hr>
+
+    <h3>Enter Grades and Credits for 5 Subjects</h3>
+
+    Subject 1 Grade: <input type="number" step="0.01" id="grade1"><br>
+    Subject 1 Credit: <input type="number" id="credit1"><br><br>
+
+    Subject 2 Grade: <input type="number" step="0.01" id="grade2"><br>
+    Subject 2 Credit: <input type="number" id="credit2"><br><br>
+
+    Subject 3 Grade: <input type="number" step="0.01" id="grade3"><br>
+    Subject 3 Credit: <input type="number" id="credit3"><br><br>
+
+    Subject 4 Grade: <input type="number" step="0.01" id="grade4"><br>
+    Subject 4 Credit: <input type="number" id="credit4"><br><br>
+
+    Subject 5 Grade: <input type="number" step="0.01" id="grade5"><br>
+    Subject 5 Credit: <input type="number" id="credit5"><br><br>
+
+    <h3>Optional: Target CGPA</h3>
+    Target CGPA: <input type="number" step="0.01" id="targetCGPA"><br>
+    Future Credits: <input type="number" id="futureCredits"><br><br>
+
+    <button onclick="calculateCGPA()">Calculate CGPA</button>
+
+    <p id="result" style="white-space: pre-line; font-size:18px; margin-top:20px;"></p>
+
+    <script src="script.js"></script>
+
 </body>
-</html>
+  </html>
